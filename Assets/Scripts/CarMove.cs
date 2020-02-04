@@ -104,6 +104,14 @@ public class CarMove : MonoBehaviour
         if (other.tag == "finish")
         {
             TargetClean(other.gameObject);
+
+            var healthbar = GameObject.Find("HealthBar");
+
+            var eyy = healthbar.GetComponent<Slider>().value;
+            eyy += 25f;
+            healthbar.GetComponent<Slider>().value = eyy;
+
+
         }
 
         if(other.tag == "enemy")
@@ -151,6 +159,7 @@ public class CarMove : MonoBehaviour
     {
         this.gameObject.tag = "PassiveCar";
         other.GetComponent<BoxCollider>().enabled = false;
+        this.GetComponent<BoxCollider>().enabled = false;
         var TargetPlane = GameObject.Find("Plane1");
         var Light = GameObject.Find("Point Light (2)");
         Light.SetActive(false);
